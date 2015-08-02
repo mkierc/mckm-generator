@@ -2,7 +2,7 @@
   <artifact type="jar" name="MCKMGen:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/MCKMGen_jar</output-path>
     <root id="archive" name="MCKMGen.jar">
-      <element id="module-output" name="MCKMGen" />
+      <element id="module-output" name="mckm-generator" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/darcula.jar" path-in-jar="/" />
     </root>
   </artifact>

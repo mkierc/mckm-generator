@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MCKMGen.iml" filepath="$PROJECT_DIR$/MCKMGen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mckm-generator.iml" filepath="$PROJECT_DIR$/mckm-generator.iml" />
     </modules>
   </component>
 </project>
