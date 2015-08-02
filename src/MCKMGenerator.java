@@ -1,47 +1,42 @@
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.Date;
-import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MCKMGenerator {
+    @SuppressWarnings("StaticVariableMayNotBeInitialized")
+    public static MCKMWindow okno;
+    public static Map<String, String> settings = new HashMap<>();
+
     public static void main(String args[]) {
-        String style = readSettings();
+        settings = MCKMUtils.readSettings();
 
         try {
-            UIManager.setLookAndFeel(style);
+            UIManager.setLookAndFeel(settings.get("style"));
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        final MCKMWindow okno = new MCKMWindow();
+        okno = new MCKMWindow();
 
-        okno.setSize(700,100);
-        okno.setLocation(100, 100);
+        okno.setSize(700, 100);
+        okno.setLocation(Integer.parseInt(settings.get("xpos")), Integer.parseInt(settings.get("ypos")));
         okno.setAlwaysOnTop(true);
         okno.setVisible(true);
     }
 
-    private static String readSettings() {
-        Scanner inScanner;
-        String style = "javax.swing.plaf.metal.MetalLookAndFeel";
+    @SuppressWarnings("StaticVariableUsedBeforeInitialization")
+    public static void restart() {
+        okno.dispose();
         try {
-            inScanner = new Scanner(new FileReader("settings.dat"));
-            while (inScanner.hasNextLine()) {
-                String line = inScanner.nextLine();
-                if (line.equals("DARK"))
-                    style = "com.bulenkov.darcula.DarculaLaf";
-                else
-                    style = "javax.swing.plaf.metal.MetalLookAndFeel";
-            }
-        } catch (FileNotFoundException e) {
+            UIManager.setLookAndFeel(settings.get("style"));
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        return style;
+        okno = new MCKMWindow();
+
+        okno.setSize(700, 100);
+        okno.setLocation(Integer.parseInt(settings.get("xpos")), Integer.parseInt(settings.get("ypos")));
+        okno.setAlwaysOnTop(true);
+        okno.setVisible(true);
     }
 }
