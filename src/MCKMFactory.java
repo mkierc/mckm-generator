@@ -1,9 +1,18 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class MCKMFactory {
-    public static String getMCKMWord(long seed) {
+    public static String getMCKMWord() {
+        // Backwards compatibility with deprecated java.util.Date.getYear()
+        int year = Calendar.getInstance().get(Calendar.YEAR) - 1900;
+        int month = Calendar.getInstance().get(Calendar.MONTH);
+        // Backwards compatibility with deprecated java.util.Date.getDay()
+        int day = Calendar.getInstance().get(Calendar.DAY_OF_WEEK) - 1;
+
+        long seed = year + month + day * 31;
+        return generateWord(seed);
+    }
+
+    public static String generateWord(long seed) {
         List<String> mckmList = new ArrayList<>();
         mckmList.add("znakomicie");
         mckmList.add("wyœmienicie");

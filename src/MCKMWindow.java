@@ -4,11 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.util.Calendar;
 import java.util.Date;
 
-/**
- * Created by mkierc on 2015-08-02.
- */
 public class MCKMWindow extends JWindow {
     private static final String SLOWO_NA_DZIS = "S³owo na dziœ: ";
     private JLabel label;
@@ -18,15 +16,12 @@ public class MCKMWindow extends JWindow {
 
     public MCKMWindow() {
         super();
-        Date date = new Date();
-        long seed = date.getYear() + date.getMonth() + date.getDay() * 31;
-        final String mckmWord = MCKMFactory.getMCKMWord(seed);
+        final String mckmWord = MCKMFactory.getMCKMWord();
+
         BorderLayout borderLayout = new BorderLayout();
         this.setLayout(borderLayout);
         label = new JLabel(SLOWO_NA_DZIS + mckmWord);
         label.setOpaque(true);
-        //label.setForeground(new Color(204, 120, 50));
-        //label.setBackground(new Color(43, 43, 43));
         label.setFont(new Font("Arial", Font.BOLD, 40));
         label.setHorizontalAlignment(SwingConstants.CENTER);
         label.setVerticalAlignment(SwingConstants.CENTER);
@@ -34,20 +29,18 @@ public class MCKMWindow extends JWindow {
         zamknijButton = new JButton("Zamknij");
         buttonPanel = new Panel();
         buttonPanel.setLayout(new FlowLayout());
-        //buttonPanel.setBackground(new Color(60, 63, 65));
         buttonPanel.add(losujButton);
         buttonPanel.add(zamknijButton);
 
         add(label, BorderLayout.NORTH);
         add(buttonPanel, BorderLayout.CENTER);
+        addListeners();
 
-        losujButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String mckm = MCKMFactory.getMCKMWord(0);
-                label.setText(SLOWO_NA_DZIS + mckm);
-            }
-        });
+
+    }
+
+    public void addListeners() {
+        losujButton.addActionListener(e -> label.setText(SLOWO_NA_DZIS + MCKMFactory.generateWord(0)));
 
         zamknijButton.addActionListener(e -> System.exit(0));
 
