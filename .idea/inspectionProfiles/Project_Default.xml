@@ -289,7 +289,6 @@
     <inspection_tool class="NewInstanceOfSingleton" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="NonFinalStaticVariableUsedInClassInitialization" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="ProtectedMemberInFinalClass" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="RedundantFieldInitialization" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="RedundantThrowsDeclaration" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="ResourceType" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="SecondUnsafeCall" enabled="false" level="WARNING" enabled_by_default="false" />

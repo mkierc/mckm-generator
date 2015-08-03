@@ -3,8 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MCKMGenerator {
-    @SuppressWarnings("StaticVariableMayNotBeInitialized")
-    public static MCKMWindow okno;
+    public static MCKMWindow okno = null;
     public static Map<String, String> settings = new HashMap<>();
 
     public static void main(String args[]) {
